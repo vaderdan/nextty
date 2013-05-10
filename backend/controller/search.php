@@ -9,21 +9,11 @@ $app->get('/search', function () use ($app) {
 	if($app->request()->get('q') == ''){
 		die(json_encode(array( 'error' => 'invalid_query' )));	
 	}
+	
 
-		
-
-	$links = array();
-
-	$b = new Browser();	
-	$b->get($app->request()->get('url'));
-	if($b->responseIsError()){
-		die(json_encode(array( 'error' => 'invalid_page_code' )));
-	}
-
-	$b->deep_search = 5;
-
-	$e = new Engine($b);
-	$e->run(array('links', 'validate', 'content', 'openpages'));
+	$e = new Engine($app->request()->get('url'));
+	// $e->getB()->deep_search = 1;
+	// $e->run(array('links', 'validate', 'content', 'openpages'));
 });
 
 

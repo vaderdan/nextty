@@ -1,7 +1,7 @@
 <?php
 
 class LocalConfig extends Config{
-	protected $db_dns = 'mysql:host=127.0.0.1;dbname=happy_flatsharing';
+	protected $db_dns = 'mysql:host=127.0.0.1;dbname=nextty';
 	protected $db_user = 'root';
 	protected $db_password = '';
 	

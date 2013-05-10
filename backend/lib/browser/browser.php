@@ -39,7 +39,17 @@ class browser extends sfWebBrowser
 
   public function getUrl()
   {
-    return $this->urlInfo; 
+    return http_build_url($this->urlInfo);
+  }
+
+  public function setUrl($url)
+  {
+    $this->urlInfo = parse_url($url);
+  }
+
+  public function setUrlInfo($url_info)
+  {
+    $this->urlInfo = $url_info;
   }
 
 

@@ -5,8 +5,24 @@ class Engine{
 
 	public function __construct($input){
 		if(is_string($input)){
-			$this->b = new Browser();
-			$this->get($input);
+			$pages = R::find('pages',' url = ? ', array(trim($input)));
+			
+			// $this->b = new Browser();
+			
+			// if($page){
+			// 	$this->b->setUrlInfo(parse_url($input));
+			// 	$this->b->setResponseHeaders(array('Content-Type: text/html'));
+			// 	$this->b->setResponseCode(200);
+			// 	$this->b->setResponseText($page->html);
+			// }
+			// else{
+			// 	$this->b->get($input);
+			
+			// 	$page = R::dispense('pages');
+			// 	$page->url = trim($input);
+			// 	$page->html = $this->b->getResponseText();
+			// 	R::store($page);
+			// }
 		}
 		else if(is_object($input) && get_class($input) == 'browser'){
 			$this->b = $input;
@@ -29,7 +45,7 @@ class Engine{
 			$e->run();
 
 			if($e->getB()){
-				$b = clone $e->getB();	
+				$b = clone $e->getB();
 			}
 			else{
 				break;
